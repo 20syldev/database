@@ -1,0 +1,233 @@
+@media (max-width: 1080px) {
+    /* Styles mobiles */
+    h1 {
+        font-size: 5vh;
+    }
+    h3 {
+        font-size: 2vh;
+    }
+}
+
+/* Styles Desktop */
+h1 {
+    font-size: 4vw;
+}
+h3 {
+    font-size: 2vw;
+}
+
+/* Page de connexion */
+.page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    border: 0;
+    border-top: 1px solid #252525;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px 45px 30px 45px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input[type="password"], input[type="text"] {
+    background: inherit;
+    border: 0;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 14px;
+    outline: 0;
+    padding: 15px 30px 15px 15px; 
+    width: 100%;
+}
+.form .decrypt-button {
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
+    background: #252525;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    border-radius: 100px;
+    padding: 15px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.form .decrypt-button:hover {
+    background: #5271FF;
+    transition: 0.5s;
+}
+.form #erreur{
+    color: #f74747;
+    margin-bottom: 10px;
+}
+
+.password-container {
+    position: relative;
+    outline: 0;
+    background: #dddddd;
+    width: 100%;
+    border: 0;
+    border-radius: 100px;
+    margin: 0 0 15px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.password-container:hover {
+    background: #cccccc;
+    transition: 0.5s;
+}
+
+.toggle-password-visibility {
+    position: absolute;
+    cursor: pointer;
+    height: 16px;
+    opacity: 50%;
+    padding: 13px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+label.remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#remember {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+#remember-label {
+    user-select: none;
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+#remember:checked ~ .checkmark {
+    background-color: #5271FF;
+    box-shadow: 0 3px 7px rgba(33, 150, 243, 0.3);
+}
+#remember:checked ~ .checkmark:after {
+    display: block;
+}
+#remember:checked ~ .checkmark:after {
+    animation: checkAnim 0.2s forwards;
+}
+
+.checkmark {
+    position: absolute;
+    top: -2.5px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #cccccc;
+    border-radius: 4px;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.checkmark:hover {
+    background-color: #bbbbbb;
+    transition: 0.5s;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6.75px;
+    top: 2.5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid gray;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border 0.75s linear infinite;
+    animation: spinner-border 0.75s linear infinite;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: spinner-border;
+}
+.spinner-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.html {
+    height: 100%;
+}
+
+.body {
+    height: 100%;
+    margin: 0;
+}
+
+.title {
+    font-size: 1.5em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.content {
+    height: 100%;
+    margin-bottom: 1em;
+    background: #252525;
+    font-family: "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations */
+@keyframes spinner-border {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes checkAnim {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 10px;
+  }
+}
