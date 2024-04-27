@@ -20,8 +20,8 @@ function searchUsername(username, target) {
     get(ref(db, 'identifiants/username/' + username)).then(snapshot => {
         if (snapshot.exists()) {
             const occurrences = snapshot.val().occurrences;
-            const sum = snapshot.val().sum.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-            const moyenne = (snapshot.val().sum / snapshot.val().occurrences).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            const sum = snapshot.val().sum.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+            const moyenne = (snapshot.val().sum / snapshot.val().occurrences).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
             if (occurrences > 1) {
                 document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum}€<br>Moyenne des montants : ${moyenne}€`; // Mettre à jour si apparition > 1
             } 
