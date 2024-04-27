@@ -21,11 +21,12 @@ function searchUsername(username, target) {
         if (snapshot.exists()) {
             const occurrences = snapshot.val().occurrences;
             const sum = snapshot.val().sum;
+            const moyenne = snapshot.val().sum / snapshot.val().occurrences;
             if (occurrences > 1) {
-                document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€`; // Mettre à jour le nombre d'occurrences et la somme si > 1
+                document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€<br>Moyenne des montants : ${moyenne.toFixed(2)}€`; // Mettre à jour si apparition > 1
             } 
             else {
-                document.getElementById(target).innerHTML = `Apparition : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€`; // Mettre à jour le nombre d'occurrences et la somme si > 1
+                document.getElementById(target).innerHTML = `Apparition : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€<br>Moyenne des montants : ${moyenne.toFixed(2)}€`; // Mettre à jour si apparition = 1
             }
         }
     });
