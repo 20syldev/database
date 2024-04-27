@@ -2,7 +2,7 @@
   <a href="https://20syldev.github.io/database"><img src="https://github.com/20syldev/database/blob/main/src/database.ico" alt="Logo" width="25%" height="auto"></a>
 
 # 20sylDB - Base de données personnelle
-  [![Version](https://img.shields.io/badge/Version%20:-v1.0.0-3857ab?labelColor=23272A)](https://github.com/20syldev/database/releases/latest)
+  [![Version](https://img.shields.io/badge/Version%20:-v1.0.1-3857ab?labelColor=23272A)](https://github.com/20syldev/database/releases/latest)
   [![Security](https://img.shields.io/badge/Security%20:-Online-49ad4c?labelColor=23272A)](https://20syldev.github.io/database)
 </div>
 
