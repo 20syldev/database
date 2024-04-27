@@ -20,13 +20,13 @@ function searchUsername(username, target) {
     get(ref(db, 'identifiants/username/' + username)).then(snapshot => {
         if (snapshot.exists()) {
             const occurrences = snapshot.val().occurrences;
-            const sum = snapshot.val().sum;
-            const moyenne = snapshot.val().sum / snapshot.val().occurrences;
+            const sum = snapshot.val().sum.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            const moyenne = (snapshot.val().sum / snapshot.val().occurrences).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
             if (occurrences > 1) {
-                document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€<br>Moyenne des montants : ${moyenne.toFixed(2)}€`; // Mettre à jour si apparition > 1
+                document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum}€<br>Moyenne des montants : ${moyenne}€`; // Mettre à jour si apparition > 1
             } 
             else {
-                document.getElementById(target).innerHTML = `Apparition : ${occurrences} fois<br>Montant total : ${sum.toFixed(2)}€<br>Moyenne des montants : ${moyenne.toFixed(2)}€`; // Mettre à jour si apparition = 1
+                document.getElementById(target).innerHTML = `Apparition : ${occurrences} fois<br>Montant total : ${sum}€<br>Moyenne des montants : ${moyenne}€`; // Mettre à jour si apparition = 1
             }
         }
     });
