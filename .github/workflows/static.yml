@@ -1,4 +1,4 @@
-name: Deploy Database and Hosting
+name: Deploy Subdomain database.gitsite.dev
 
 on:
   push:
