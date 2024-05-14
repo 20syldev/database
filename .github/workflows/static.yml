@@ -1,4 +1,4 @@
-name: Deploy Subdomain database.gitsite.dev
+name: Deploy Subdomain database.sylvain.pro
 
 on:
   push:
