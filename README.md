@@ -2,7 +2,7 @@
   <a href="https://database.sylvain.pro"><img src="https://database.sylvain.pro/src/database.ico" alt="Logo" width="25%" height="auto"></a>
 
 # Base de données personnelle - Sylvain
-  [![Version](https://img.shields.io/badge/Version%20:-v1.0.3-3857ab?labelColor=23272A)](https://github.com/20syldev/database/releases/latest)
+  [![Version](https://img.shields.io/badge/Version%20:-v1.0.4-3857ab?labelColor=23272A)](https://github.com/20syldev/database/releases/latest)
   [![Security](https://img.shields.io/badge/Site%20:-Online-49ad4c?labelColor=23272A)](https://database.sylvain.pro)
 </div>
 
