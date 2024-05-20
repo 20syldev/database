@@ -24,8 +24,7 @@ function searchUsername(username, target) {
             const moyenne = (snapshot.val().sum / snapshot.val().occurrences).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
             if (occurrences > 1) {
                 document.getElementById(target).innerHTML = `Apparitions : ${occurrences} fois<br>Montant total : ${sum}€<br>Moyenne des montants : ${moyenne}€`; // Mettre à jour si apparition > 1
-            } 
-            else {
+            } else {
                 document.getElementById(target).innerHTML = `Apparition : ${occurrences} fois<br>Montant total : ${sum}€<br>Moyenne des montants : ${moyenne}€`; // Mettre à jour si apparition = 1
             }
         }
@@ -61,8 +60,7 @@ function updateSuggestions(suggestions, suggestionsListId, targetInputId, target
                 searchUsername(username, targetOccurrencesId); // Mettre à jour le nombre d'occurrences après la sélection
             });
             suggestionsList.appendChild(listItem);
-        } 
-        else {
+        } else {
             const listItem = document.createElement('li');
             listItem.textContent = username;
             listItem.classList.add('list-group-item', 'list-group-item-action', 'suggestion-item');
@@ -76,8 +74,14 @@ function updateSuggestions(suggestions, suggestionsListId, targetInputId, target
     });
 }
 
+let cancelTimeout; // Stocker le délai d'annulation
+let lastUsername = ''; // Stocker le dernier utilisateur demandé
+let lastValue = ''; // Stocker la dernière valeur demandée
+
 // Fonction pour sauvegarder le nom d'utilisateur dans Firebase
 function saveUsername(username, sum) {
+    lastUsername = username;
+    lastValue = sum;
     const button = document.getElementById('submit-btn');
     const inputField = document.getElementById('username');
     button.disabled = true; // Désactiver le bouton pendant le traitement
@@ -102,7 +106,7 @@ function saveUsername(username, sum) {
         const updatedOccurrences = currentOccurrences + 1;
         const newSum = existingSum + parseFloat(sum.replace(',', '.')); // Ajouter la nouvelle somme à la somme existante
         // Sauvegarder le nombre d'occurrences et la somme mise à jour dans la base de données
-        set(ref(db, 'identifiants/username/' + username), {
+        set(ref(db, 'identifiants/username/' + username.trim().toLowerCase()), {
             occurrences: updatedOccurrences,
             sum: newSum
         }).then(() => {
@@ -137,15 +141,11 @@ function saveUsername(username, sum) {
     });
 }
 
-let cancelTimeout; // Déclarer une variable pour stocker le délai d'annulation
-
 // Événements pour la soumission du formulaire
 document.getElementById('username-form').addEventListener('submit', e => {
     e.preventDefault();
     const username = document.getElementById('username').value;
     const sum = document.getElementById('sum').value;
-    const button = document.getElementById('submit-btn');
-    const inputField = document.getElementById('username');
 
     // Vérifier si la somme est un nombre valide et supérieur ou égal à 0
     if (isNaN(parseFloat(sum.replace(',', '.'))) || parseFloat(sum.replace(',', '.')) < 0) {
@@ -160,8 +160,8 @@ document.getElementById('username-form').addEventListener('submit', e => {
 
 // Événements pour le bouton d'annulation
 document.getElementById('cancel-btn').addEventListener('click', () => {
-    const username = document.getElementById('username').value;
-    const sum = parseFloat(document.getElementById('sum').value.replace(',', '.'));
+    const username = lastUsername;
+    const sum = parseFloat(lastValue.replace(',', '.'));
     get(ref(db, 'identifiants/username/' + username)).then(snapshot => {
         const currentOccurrences = snapshot.exists() ? snapshot.val().occurrences : 0;
         const existingSum = snapshot.exists() ? snapshot.val().sum || 0 : 0;
@@ -174,8 +174,7 @@ document.getElementById('cancel-btn').addEventListener('click', () => {
             }).catch((error) => {
                 console.error("Erreur lors du décrément d'occurrence : ", error);
             });
-        } 
-        else {
+        } else {
             remove(ref(db, 'identifiants/username/' + username)).catch((error) => {
                 console.error("Erreur lors de la suppression du nom d'utilisateur de la base de données : ", error);
             });
@@ -201,8 +200,7 @@ document.getElementById('username').addEventListener('input', e => {
     // Vérifier si la somme n'est pas un nombre ou si elle est négative
     if (isNaN(sum) || sum < 0) {
         button.disabled = true; // Désactiver le bouton si la somme n'est pas un nombre valide positif
-    } 
-    else {
+    } else {
         button.disabled = !usernameInput || !sumInput; // Désactiver le bouton si la valeur de l'entrée est vide
     }
 
@@ -227,8 +225,7 @@ document.getElementById('sum').addEventListener('input', e => {
     // Vérifier si la somme n'est pas un nombre ou si elle est négative
     if (isNaN(sum) || sum < 0) {
         button.disabled = true; // Désactiver le bouton si la somme n'est pas un nombre valide positif
-    } 
-    else {
+    } else {
         button.disabled = !usernameInput || !sumInput; // Désactiver le bouton si la valeur de l'entrée est vide
     }
 });
@@ -242,8 +239,7 @@ document.getElementById('search-username').addEventListener('input', e => {
             updateSuggestions(filteredUsernames, 'search-suggestions-list', 'search-username', 'search-occurrences-count');
         });
         document.getElementById('search-occurrences-count').innerText = ''; // Effacer le texte par défaut
-    } 
-    else {
+    } else {
         document.getElementById('search-suggestions-list').innerHTML = ''; // Effacer les suggestions si l'entrée est vide
         document.getElementById('search-occurrences-count').innerText = 'Recherchez un nom d\'utilisateur pour afficher les informations.'; // Réinitialiser le texte par défaut
     }
