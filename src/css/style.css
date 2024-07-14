@@ -156,8 +156,8 @@ label.remember {
     content: "";
     position: absolute;
     display: none;
-    left: 6.75px;
-    top: 2.5px;
+    left: 6.25px;
+    top: 2px;
     width: 5px;
     height: 10px;
     border: solid white;
