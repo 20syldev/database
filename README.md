@@ -9,4 +9,4 @@
 ---
 
 > [!WARNING]
-> Ce site est a été archivé, il n'est plus disponible, vous pouvez cependant toujours copier le code et essayer de le comprendre pour faire votre base de données sans serveur,  
+> Ce site est a été archivé, il n'est plus disponible, vous pouvez cependant toujours copier le code et essayer de le comprendre pour faire votre base de données sans serveur.
